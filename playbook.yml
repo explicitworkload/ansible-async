@@ -1,0 +1,14 @@
+- name: Run playbook locally on RHEL 9
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  become: yes
+
+  tasks:
+
+    - name: Execute the script
+      ansible.builtin.shell: ./files/create.sh
+      async: 45              # allow up to 45 seconds runtime
+      poll: 2                # run in background (optional)
+
+
